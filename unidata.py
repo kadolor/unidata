@@ -32,15 +32,16 @@ import pandas as pd
 
 
 def remove_character_from_column(data_frame, character, *columns):
-    """Removes <code>character</code> from <code>*columns</code> in
-    <code>data_frame</code>.
+    """Removes <code>character</code> from columns with the <code>object</code> 
+    datatype in <code>data_frame</code>.
     
     Args:
         <code>data_frame</code>: A pandas DataFrame.
-        <code>character</code>: The character you want to remove.
-        <code>*columns<code>: The name(s) of the column(s) that contain the
-        <code>character</code> that you want to remove. <code>*columns</code>must be
-        formatted as <code>object</code>.
+        <code>character</code>: The character that you want to remove.
+        <code>*columns<code>: The names of the columns that contain the
+        <code>character</code> that you want to remove. <code>*columns</code> 
+        parameters must be passed as strings and the column arguments must have
+        the <code>float64</code> data type.
     """
     for each_column in columns:
         data_frame[each_column] = data_frame[each_column].str.replace(
@@ -60,14 +61,15 @@ def get_column_names(data_frame):
 
 
 def round_column(data_frame, *columns):
-    """Rounds the <code>*columns</code> in <code>data_frame</code> to the 
-    nearest hundredth. 
+    """Rounds columns with the <code>float64</code> datatype in
+    <code>data_frame</code> to the nearest hundredth. 
 
     Args:
         <code>data_frame</code>: A pandas DataFrame.
-        <code>*columns</code>: The name(s) of the column(s) that you want
-        to round. <code>*columns</code> must be formatted as float64.
-
+        <code>*columns</code>: The names of the columns that contain the values 
+        that you want to round. <code>*columns</code> parameters must be passed 
+        as strings and the column arguments must have the <code>float64</code> 
+        data type.
     """
     for arg in columns:
         if data_frame[arg].dtype == "float64":
@@ -77,12 +79,14 @@ def round_column(data_frame, *columns):
 
 
 def create_float_values(data_frame, *columns):
-    """Converts values to the float64 data type. 
+    """Converts values in <code>data_frame</code> to the float64 data type. 
 
     Args:
         <code>data_frame</code>: A pandas DataFrame.
-        <code>*columns</code>: The name(s) of the column(s) or convert 
-        to float64. 
+        <code>*columns</code>: The names of the columns that contain the values 
+        that you want to convert to float64. <code>*columns</code> parameters 
+        must be passed as strings and the column arguments must have the
+        <code>float64</code> data type.
     """
     for arg in columns:
         data_frame[arg] = pd.to_numeric(data_frame[arg])
@@ -98,9 +102,10 @@ def format_currency_entries(data_frame, character="$", *columns):
     Args:
         <code>data_frame</code>: A pandas DataFrame.
         <code>character</code>: The currency symbol that you want to remove.
-        Defaults to $.
-        <code>*columns</code>: The name(s) of the column(s) that you want to format.
-        Columns included in <code>*columns</code> must have the <code>object</code> data type.
+        <code>character</code> defaults to "$".
+        <code>*columns</code>: The names of the columns that you want to format.
+        <code>*columns</code> parameters must be passed as strings and the
+        column arguments must have the <code>object</code> data type.
     """
     for column in columns:
         remove_character_from_column(data_frame, character, column)
@@ -114,8 +119,10 @@ def check_column_for_negatives(data_frame, *columns):
 
     Args:
         <code>data_frame</code>: A pandas DataFrame.
-        <code>*columns</code>: The name(s) of the float64 column(s) that you
-        want to check for negative values.
+        <code>*columns</code>: The names of the float64 columns that you
+        want to check for negative values. <code>*columns</code> parameters 
+        must be passed as strings and the column arguments must have the 
+        <code>float64</code> data type.
     Raises:
         ValueError: If columns are found to contain negative values.
 
