@@ -38,9 +38,9 @@ def remove_character_from_column(data_frame, character, *columns):
     Args:
         <code>data_frame</code>: A pandas DataFrame.
         <code>character</code>: The character you want to remove.
-        <code>*columns<code>: The name or names of the  column or columns that contain the <code>character</code>
-        you want to remove. <code>*columns</code>must formatted with the
-        <code>object</code> data type.
+        <code>*columns<code>: The name(s) of the column(s) that contain the
+        <code>character</code> that you want to remove. <code>*columns</code>must be
+        formatted as <code>object</code>.
     """
     for each_column in columns:
         data_frame[each_column] = data_frame[each_column].str.replace(
@@ -60,13 +60,13 @@ def get_column_names(data_frame):
 
 
 def round_column(data_frame, *columns):
-    """Rounds float64 <code>*columns</code> in <code>data_frame</code>
-    to the nearest hundredth. 
+    """Rounds the <code>*columns</code> in <code>data_frame</code> to the 
+    nearest hundredth. 
 
     Args:
         <code>data_frame</code>: A pandas DataFrame.
-        <code>*columns</code>: The name or names of columns that you want
-        to round. <code>*columns</code> must be formatted to float64.
+        <code>*columns</code>: The name(s) of the column(s) that you want
+        to round. <code>*columns</code> must be formatted as float64.
 
     """
     for arg in columns:
@@ -77,12 +77,12 @@ def round_column(data_frame, *columns):
 
 
 def create_float_values(data_frame, *columns):
-    """Converts <code>data_frame</code> <code>*columns</code> to the float64
-    dtype. 
+    """Converts values to the float64 data type. 
 
     Args:
         <code>data_frame</code>: A pandas DataFrame.
-        <code>*columns</code>: The names of the column or columns to convert to float64 dtype. 
+        <code>*columns</code>: The name(s) of the column(s) or convert 
+        to float64. 
     """
     for arg in columns:
         data_frame[arg] = pd.to_numeric(data_frame[arg])
@@ -97,10 +97,10 @@ def format_currency_entries(data_frame, character="$", *columns):
 
     Args:
         <code>data_frame</code>: A pandas DataFrame.
-        <code>character</code>: The currency symbol you want to remove.
+        <code>character</code>: The currency symbol that you want to remove.
         Defaults to $.
-        <code>*columns</code>: The names column or columns you 
-        want to format. <code>*columns</code> must be strings.
+        <code>*columns</code>: The name(s) of the column(s) that you want to format.
+        Columns included in <code>*columns</code> must have the <code>object</code> data type.
     """
     for column in columns:
         remove_character_from_column(data_frame, character, column)
@@ -114,7 +114,8 @@ def check_column_for_negatives(data_frame, *columns):
 
     Args:
         <code>data_frame</code>: A pandas DataFrame.
-        <code>*columns</code>: The names of the Float64 columns to check for negative values.
+        <code>*columns</code>: The name(s) of the float64 column(s) that you
+        want to check for negative values.
     Raises:
         ValueError: If columns are found to contain negative values.
 
