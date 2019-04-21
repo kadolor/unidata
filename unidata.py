@@ -19,6 +19,9 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+"""@package unidata
+Documentation for unidata.
+"""
 
 from __future__ import absolute_import
 from __future__ import division
@@ -28,14 +31,16 @@ import numpy as np
 import pandas as pd
 
 
-# Remember two lines between functions
 def remove_character_from_column(data_frame, character, *columns):
-    """Removes @character from @columns in @data_frame.
+    """Removes <code>character</code> from <code>*columns</code> in
+    <code>data_frame</code>.
     
     Args:
-        data_frame: A pandas DataFrame.
-        character: The character you want to remove.
-        *column: The string column or columns you want to remove the character from.
+        <code>data_frame</code>: A pandas DataFrame.
+        <code>character</code>: The character you want to remove.
+        <code>*columns<code>: The name or names of the  column or columns that contain the <code>character</code>
+        you want to remove. <code>*columns</code>must formatted with the
+        <code>object</code> data type.
     """
     for each_column in columns:
         data_frame[each_column] = data_frame[each_column].str.replace(
@@ -43,25 +48,26 @@ def remove_character_from_column(data_frame, character, *columns):
 
 
 def get_column_names(data_frame):
-    """Returns a list of every column name in @data_frame.
+    """Returns a list of every column name in <code>data_frame</code>.
 
     Args:
-        data_frame: A pandas DataFrame.
+        <code>data_frame</code>: A pandas DataFrame.
     Returns:
-        Returns a list of every column name in @data_frame.
+        A list of every column name in <code>data_frame</code>.
     """
     column_names = data_frame.columns.get_values()
     return column_names
 
 
 def round_column(data_frame, *columns):
-    """Rounds float64 @*columns in @data_frame to the nearest hundredth. 
+    """Rounds float64 <code>*columns</code> in <code>data_frame</code>
+    to the nearest hundredth. 
 
     Args:
-        data_frame: A pandas DataFrame.
-        *columns: The float64 column or columns you want to round. 
+        <code>data_frame</code>: A pandas DataFrame.
+        <code>*columns</code>: The name or names of columns that you want
+        to round. <code>*columns</code> must be formatted to float64.
 
-    Returns: 
     """
     for arg in columns:
         if data_frame[arg].dtype == "float64":
@@ -71,11 +77,12 @@ def round_column(data_frame, *columns):
 
 
 def create_float_values(data_frame, *columns):
-    """Sets @data_frame @*columns to float64 numerical type. 
+    """Converts <code>data_frame</code> <code>*columns</code> to the float64
+    dtype. 
 
     Args:
-        data_frame: A pandas DataFrame.
-        *columns: The column or columns set to float64 numerical type. 
+        <code>data_frame</code>: A pandas DataFrame.
+        <code>*columns</code>: The names of the column or columns to convert to float64 dtype. 
     """
     for arg in columns:
         data_frame[arg] = pd.to_numeric(data_frame[arg])
@@ -83,16 +90,17 @@ def create_float_values(data_frame, *columns):
 
 
 def format_currency_entries(data_frame, character="$", *columns):
-    """Formats @columns in the following ways: 
+    """Formats <code>*columns</code> in the following ways: 
     - Removes currency symbol.
-    - Sets @columns to float64.
-    - Rounds @columns to the nearest hundredth.
+    - Converts <code>*columns</code> to float64.
+    - Rounds <code>*columns</code> to the nearest hundredth.
 
     Args:
-        data_frame: A pandas DataFrame.
-        character: The currency symbol you want to remove. Defaults to $.
-        *columns: The string column or columns you want formatted. 
-    Raises
+        <code>data_frame</code>: A pandas DataFrame.
+        <code>character</code>: The currency symbol you want to remove.
+        Defaults to $.
+        <code>*columns</code>: The names column or columns you 
+        want to format. <code>*columns</code> must be strings.
     """
     for column in columns:
         remove_character_from_column(data_frame, character, column)
@@ -101,13 +109,14 @@ def format_currency_entries(data_frame, character="$", *columns):
 
 
 def check_column_for_negatives(data_frame, *columns):
-    """Checks @columns in @data_frame for negative values.
+    """Checks <code>*columns</code> in <code>data_frame</code>
+    for negative values.
 
     Args:
-        data_frame: A pandas DataFrame.
-        *columns: Float64 columns to check for negative values.
+        <code>data_frame</code>: A pandas DataFrame.
+        <code>*columns</code>: The names of the Float64 columns to check for negative values.
     Raises:
-        ValueError
+        ValueError: If columns are found to contain negative values.
 
     """
     for column in columns:
@@ -115,6 +124,5 @@ def check_column_for_negatives(data_frame, *columns):
             for value in data_frame[column]:
                 if value < 0:
                     raise ValueError(
-                        "A column in this DataFrame contains negative values. "+
-                        "Review the original data file."
-                    )
+                        "A column in this DataFrame contains negative values. "
+                        + "Review the original data file.")
