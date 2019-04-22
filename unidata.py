@@ -32,105 +32,131 @@ import pandas as pd
 
 
 def remove_character_from_column(data_frame, character, *columns):
-    """Removes <code>character</code> from columns with the <code>object</code> 
-    datatype in <code>data_frame</code>.
+    """Removes character from specified float64 columns in data_frame.
     
     Args:
-        <code>data_frame</code>: A pandas DataFrame.
-        <code>character</code>: The character that you want to remove.
-        <code>*columns<code>: The names of the columns that contain the
-        <code>character</code> that you want to remove. <code>*columns</code> 
-        parameters must be passed as strings and the column arguments must have
-        the <code>float64</code> data type.
+        data_frame: A pandas.DataFrame.
+        character: The character that you want to remove.
+        *columns: The names of the columns that contain the
+        character that you want to remove.
+        *columns parameters must be passed as strings
+        and the column arguments must have the object data type.
     """
     for each_column in columns:
-        data_frame[each_column] = data_frame[each_column].str.replace(
-            character, "")
+        if type(each_column) == str:
+            continue
+        else:
+            raise ValueError("*columns parameters must be passed as strings.")
+        if data_frame[each_column].dtype == "object":
+            data_frame[each_column] = data_frame[each_column].str.replace(
+                character, "")
+        else:
+            raise ValueError("Column arguments must have the object data type")
 
 
 def get_column_names(data_frame):
-    """Returns a list of every column name in <code>data_frame</code>.
+    """Returns a list of every column name in data_frame.
 
     Args:
-        <code>data_frame</code>: A pandas DataFrame.
+        data_frame: A pandas.DataFrame.
     Returns:
-        A list of every column name in <code>data_frame</code>.
+        A list of every column name in data_frame.
     """
     column_names = data_frame.columns.get_values()
     return column_names
 
 
 def round_column(data_frame, *columns):
-    """Rounds columns with the <code>float64</code> datatype in
-    <code>data_frame</code> to the nearest hundredth. 
+    """Rounds specifed columns data_frame to the nearest hundredth. 
 
     Args:
-        <code>data_frame</code>: A pandas DataFrame.
-        <code>*columns</code>: The names of the columns that contain the values 
-        that you want to round. <code>*columns</code> parameters must be passed 
-        as strings and the column arguments must have the <code>float64</code> 
+        data_frame: A pandas.DataFrame.
+        *columns: The names of the columns that contain the values 
+        that you want to round. *columns parameters must be passed 
+        as strings and the column arguments must have the float64 
         data type.
     """
-    for arg in columns:
-        if data_frame[arg].dtype == "float64":
-            data_frame[arg] = data_frame[arg].round(decimals=2)
-        elif data_frame[arg].dtype != "float64":
-            pass
+    for each_column in columns:
+        if type(each_column) == str:
+            continue
+        else:
+            raise ValueError("*columns parameters must be passed as strings.")
+        if data_frame[each_column].dtype == "float64":
+            data_frame[each_column] = data_frame[each_column].round(decimals=2)
+        else:
+            raise ValueError("A column in *columns is not a float.")
 
 
 def create_float_values(data_frame, *columns):
-    """Converts values in <code>data_frame</code> to the float64 data type. 
+    """Converts values in specified columns in data_frame to the float64 data type. 
 
     Args:
-        <code>data_frame</code>: A pandas DataFrame.
-        <code>*columns</code>: The names of the columns that contain the values 
-        that you want to convert to float64. <code>*columns</code> parameters 
-        must be passed as strings and the column arguments must have the
-        <code>float64</code> data type.
+        data_frame: A pandas.DataFrame.
+        *columns: The names of the columns that contain the values 
+        that you want to convert to the float64 data type. *columns parameters 
+        must be passed as strings.
     """
-    for arg in columns:
-        data_frame[arg] = pd.to_numeric(data_frame[arg])
-        data_frame[arg].astype(dtype=float)
+    for each_column in columns:
+        if type(each_column) == str:
+            continue
+        else:
+            raise ValueError("*columns parameters must be passed as strings.")
+    for each_column in columns:
+        data_frame[each_column] = pd.to_numeric(data_frame[each_column])
+        data_frame[each_column].astype(dtype=float)
 
 
 def format_currency_entries(data_frame, character="$", *columns):
-    """Formats <code>*columns</code> in the following ways: 
+    """Formats *columns in the following ways: 
     - Removes currency symbol.
-    - Converts <code>*columns</code> to float64.
-    - Rounds <code>*columns</code> to the nearest hundredth.
+    - Converts *columns to float64.
+    - Rounds *columns to the nearest hundredth.
 
     Args:
-        <code>data_frame</code>: A pandas DataFrame.
-        <code>character</code>: The currency symbol that you want to remove.
-        <code>character</code> defaults to "$".
-        <code>*columns</code>: The names of the columns that you want to format.
-        <code>*columns</code> parameters must be passed as strings and the
-        column arguments must have the <code>object</code> data type.
+        data_frame: A pandas.DataFrame.
+        character: The currency symbol that you want to remove.
+        character defaults to "$".
+        *columns: The names of the columns that you want to format.
+        *columns parameters must be passed as strings and the
+        column arguments must have the object data type.
     """
+    for each_column in columns:
+        if type(each_column) == str:
+            continue
+        else:
+            raise ValueError("*columns parameters must be passed as strings.")
+
     for column in columns:
         remove_character_from_column(data_frame, character, column)
         create_float_values(data_frame, column)
         round_column(data_frame, column)
 
 
-def check_column_for_negatives(data_frame, *columns):
-    """Checks <code>*columns</code> in <code>data_frame</code>
-    for negative values.
+def verify_positive_values(data_frame, *columns):
+    """Verifies that specifed columns in data_frame have only positive values.
 
     Args:
-        <code>data_frame</code>: A pandas DataFrame.
-        <code>*columns</code>: The names of the float64 columns that you
-        want to check for negative values. <code>*columns</code> parameters 
+        data_frame: A pandas.DataFrame.
+        *columns: The names of the float64 columns that you
+        want to check for negative values. *columns parameters 
         must be passed as strings and the column arguments must have the 
-        <code>float64</code> data type.
+        float64 or int64 data type.
     Raises:
         ValueError: If columns are found to contain negative values.
-
+        ValueError: If column arguments do not have the float64 data type or the int64 data type.
     """
-    for column in columns:
-        if data_frame[column].dtype == "float64":
-            for value in data_frame[column]:
+    for each_column in columns:
+        if type(each_column) == str:
+            continue
+        else:
+            raise ValueError("*columns parameters must be passed as strings.")
+
+    for each_column in columns:
+        if data_frame[each_column].dtype == "float64":
+            for value in data_frame[each_column]:
                 if value < 0:
                     raise ValueError(
-                        "A column in this DataFrame contains negative values. "
-                        + "Review the original data file.")
+                        "Columns in this DataFrame contain negative values.")
+            else:
+                raise ValueError("Columns in this DataFrame contain only " +
+                                 "positive values.")
