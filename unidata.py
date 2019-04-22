@@ -38,6 +38,8 @@ def remove_character_from_column(data_frame, character, *columns):
         character that you want to remove.
         *columns parameters must be passed as strings
         and the column arguments must have the object data type.
+    Raises:
+        ValueError: If *columns parameters are not passed as strings.
     """
     for each_column in columns:
         if type(each_column) == str:
@@ -73,6 +75,8 @@ def round_column(data_frame, *columns):
         that you want to round. *columns parameters must be passed 
         as strings and the column arguments must have the float64 
         data type.
+    Raises:
+        ValueError: If *columns parameters are not passed as strings.
     """
     for each_column in columns:
         if type(each_column) == str:
@@ -86,13 +90,16 @@ def round_column(data_frame, *columns):
 
 
 def create_float_values(data_frame, *columns):
-    """Converts values in specified columns in data_frame to the float64 data type. 
+    """Converts values in specified columns in data_frame to the
+    float64 data type. 
 
     Args:
         data_frame: A pandas.DataFrame.
         *columns: The names of the columns that contain the values 
         that you want to convert to the float64 data type. *columns parameters 
         must be passed as strings.
+    Raises:
+        ValueError: If *columns parameters are not passed as strings.
     """
     for each_column in columns:
         if type(each_column) == str:
@@ -117,6 +124,8 @@ def format_currency_entries(data_frame, character="$", *columns):
         *columns: The names of the columns that you want to format.
         *columns parameters must be passed as strings and the
         column arguments must have the object data type.
+    Raises:
+        ValueError: If *columns parameters are not passed as strings.
     """
     for each_column in columns:
         if type(each_column) == str:
@@ -140,8 +149,8 @@ def verify_positive_values(data_frame, *columns):
         must be passed as strings and the column arguments must have the 
         float64 or int64 data type.
     Raises:
-        ValueError: If columns are found to contain negative values.
-        ValueError: If column arguments do not have the float64 data type or the int64 data type.
+        ValueError: If *columns parameters are not passed as strings.
+        ValueError: If values in column arguments contain negative values.
     """
     for each_column in columns:
         if type(each_column) == str:
