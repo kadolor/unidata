@@ -19,9 +19,6 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""@package unidata
-Documentation for unidata.
-"""
 
 from __future__ import absolute_import
 from __future__ import division
@@ -67,7 +64,8 @@ def get_column_names(data_frame):
 
 
 def round_column(data_frame, *columns):
-    """Rounds specifed columns data_frame to the nearest hundredth. 
+    """Rounds the specifed float64 columns in data_frame
+    to the nearest hundredth. 
 
     Args:
         data_frame: A pandas.DataFrame.
@@ -107,10 +105,10 @@ def create_float_values(data_frame, *columns):
 
 
 def format_currency_entries(data_frame, character="$", *columns):
-    """Formats *columns in the following ways: 
+    """Formats data_frame columns in the following ways: 
     - Removes currency symbol.
-    - Converts *columns to float64.
-    - Rounds *columns to the nearest hundredth.
+    - Converts data_frame columns to float64.
+    - Rounds data_frame columns to the nearest hundredth.
 
     Args:
         data_frame: A pandas.DataFrame.
@@ -152,11 +150,8 @@ def verify_positive_values(data_frame, *columns):
             raise ValueError("*columns parameters must be passed as strings.")
 
     for each_column in columns:
-        if data_frame[each_column].dtype == "float64":
+        if data_frame[each_column].dtype == "float64" or "int64":
             for value in data_frame[each_column]:
                 if value < 0:
                     raise ValueError(
                         "Columns in this DataFrame contain negative values.")
-            else:
-                raise ValueError("Columns in this DataFrame contain only " +
-                                 "positive values.")
