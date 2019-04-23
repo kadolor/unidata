@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0062)file:///Users/kellyanndolor/Desktop/google-python/unidata.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>unidata reference documentation</title>
+
+</head><body bgcolor="#f0f0f8">
+<font face="helvetica, arial" size="4">
+</font><table width="100%" cellspacing="0" cellpadding="2" border="0" summary="heading">
+<tbody><tr bgcolor="#167785">
+<td valign="bottom">&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>unidata reference documentation</strong></big></big></font></td><td align="right" valign="bottom"><font color="#ffffff" face="helvetica, arial"></font></td></tr></tbody></table><font face="helvetica, arial" size="4">
+    <p><font size="3">Copyright © 2019 Kelly-Ann R. Dolor</font></p><font size="3">
+
+            <p>Licensed under the MIT License.</p>
+            </font>
+<p>
+<table width="100%" cellspacing="0" cellpadding="5" border="0" summary="section">
+<tbody><tr bgcolor="#1C98A9">
+<td colspan="3" valign="bottom">&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#1C98A9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tbody><tr><td width="25%" valign="top"><a href="https://docs.scipy.org/doc/numpy/reference/">numpy</a><br>
+</td><td width="25%" valign="top"><a href="https://pandas.pydata.org/pandas-docs/stable/index.html">pandas</a><br>
+</td><td width="25%" valign="top"></td><td width="25%" valign="top"></td></tr></tbody></table></td></tr></tbody></table></p><p>
+<br><font color="#ffffff" face="helvetica, arial"></font><table width="100%" cellspacing="0" cellpadding="5" border="0" summary="section">
+<tbody><tr bgcolor="1C98A9">
+<td colspan="3" valign="bottom">&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+
+<tr><td bgcolor="#1C98A9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>&nbsp;</td>
+<td width="100%"><dl><dt><br><br><a name="-create_float_values"><strong>create_float_values</strong></a>(<tt>data_frame</tt>, <tt>*columns</tt>)</dt><dd>Converts&nbsp;values&nbsp;in&nbsp;specified&nbsp;columns&nbsp;in&nbsp;<tt>data_frame</tt>&nbsp;to&nbsp;the<br>
+<tt>float64</tt>&nbsp;data&nbsp;type.&nbsp;<br>
+&nbsp;<br>
+<b>Args</b>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>data_frame</tt>:&nbsp;A&nbsp;pandas.DataFrame.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>*columns</tt>:&nbsp;The&nbsp;names&nbsp;of&nbsp;the&nbsp;columns&nbsp;that&nbsp;contain&nbsp;the&nbsp;values&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;you&nbsp;want&nbsp;to&nbsp;convert&nbsp;to&nbsp;the&nbsp;<tt>float64</tt>&nbsp;data&nbsp;type.&nbsp;<tt>*columns</tt>&nbsp;parameters&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;must&nbsp;be&nbsp;passed&nbsp;as&nbsp;strings.<br>
+<b>Raises</b>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>ValueError</tt>:&nbsp;If&nbsp;<tt>*columns</tt>&nbsp;parameters&nbsp;are&nbsp;not&nbsp;passed&nbsp;as&nbsp;strings.</dd></dl>
+<br>
+ <dl><dt><a name="-format_currency_entries"><strong>format_currency_entries</strong></a>(<tt>data_frame</tt>, <tt>character="$"</tt>, <tt>*columns</tt>)</dt><dd>Formats specified &nbsp;<tt>data_frame</tt>&nbsp;columns&nbsp;in&nbsp;the&nbsp;following&nbsp;ways:&nbsp;<br>
+-&nbsp;Removes&nbsp;currency&nbsp;symbol.<br>
+-&nbsp;Converts&nbsp;<tt>data_frame</tt>&nbsp;columns&nbsp;to&nbsp;the&nbsp;<tt>float64</tt>&nbsp;data&nbsp;type.<br>
+-&nbsp;Rounds&nbsp;values&nbsp;in specified&nbsp;<tt>data_frame</tt>&nbsp;columns&nbsp;to&nbsp;the&nbsp;nearest&nbsp;hundredth.<br>
+&nbsp;<br>
+<nr>
+<b>Args</b>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>data_frame</tt>:&nbsp;A&nbsp;pandas.DataFrame.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>character</tt>:&nbsp;The&nbsp;currency&nbsp;symbol&nbsp;that&nbsp;you&nbsp;want&nbsp;to&nbsp;remove.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>character</tt>&nbsp;defaults&nbsp;to&nbsp;"$".<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>*columns</tt>:&nbsp;The&nbsp;names&nbsp;of&nbsp;the&nbsp;columns&nbsp;that&nbsp;you&nbsp;want&nbsp;to&nbsp;format.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>*columns</tt>&nbsp;parameters&nbsp;must&nbsp;be&nbsp;passed&nbsp;as&nbsp;strings&nbsp;and&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;column&nbsp;arguments&nbsp;must&nbsp;have&nbsp;the&nbsp;<tt>object</tt>&nbsp;data&nbsp;type.<br>
+<b>Raises</b>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>ValueError</tt>:&nbsp;If&nbsp;<tt>*columns</tt>&nbsp;parameters&nbsp;are&nbsp;not&nbsp;passed&nbsp;as&nbsp;strings.</nr></dd></dl><br>
+ <dl><dt><a name="-get_column_names"><strong>get_column_names</strong></a>(<tt>data_frame</tt>)</dt><dd>Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;every&nbsp;column&nbsp;name&nbsp;in&nbsp;<tt>data_frame</tt>.<br>
+&nbsp;<br>
+<b>Args</b>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>data_frame</tt>:&nbsp;A&nbsp;pandas.DataFrame.<br>
+<b>Returns</b>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;list&nbsp;of&nbsp;every&nbsp;column&nbsp;name&nbsp;in&nbsp;<tt>data_frame</tt>.</dd></dl><br>
+ <dl><dt><a name="-remove_character_from_column"><strong>remove_character_from_column</strong></a>(<tt>data_frame</tt>, <tt>character</tt>, <tt>*columns</tt>)</dt><dd>Removes&nbsp;<tt>character</tt>&nbsp;from&nbsp;specified&nbsp;<tt>float64</tt>&nbsp;columns&nbsp;in&nbsp;<tt>data_frame</tt>.<br>
+&nbsp;<br>
+<b>Args</b>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>data_frame</tt>:&nbsp;A&nbsp;pandas.DataFrame.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>character</tt>:&nbsp;The&nbsp;<tt>character</tt>&nbsp;that&nbsp;you&nbsp;want&nbsp;to&nbsp;remove.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>*columns</tt>:&nbsp;The&nbsp;names&nbsp;of&nbsp;the&nbsp;columns&nbsp;that&nbsp;contain&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>character</tt>&nbsp;that&nbsp;you&nbsp;want&nbsp;to&nbsp;remove.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>*columns</tt>&nbsp;parameters&nbsp;must&nbsp;be&nbsp;passed&nbsp;as&nbsp;strings<br>
+&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;the&nbsp;column&nbsp;arguments&nbsp;must&nbsp;have&nbsp;the&nbsp;<tt>object</tt>&nbsp;data&nbsp;type.<br>
+<b>Raises</b>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>ValueError</tt>:&nbsp;If&nbsp;<tt>*columns</tt>&nbsp;parameters&nbsp;are&nbsp;not&nbsp;passed&nbsp;as&nbsp;strings.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>ValueError</tt>:&nbsp;If&nbsp;<tt>*columns</tt>&nbsp;arguments&nbsp;do&nbsp;not&nbsp;have&nbsp;the&nbsp;<tt>object</tt>&nbsp;data&nbsp;type.</dd></dl><br>
+ <dl><dt><a name="-round_column"><strong>round_column</strong></a>(<tt>data_frame</tt>, <tt>*columns</tt>)</dt><dd>Rounds&nbsp;the&nbsp;specifed&nbsp;<tt>float64</tt>&nbsp;columns&nbsp;in&nbsp;<tt>data_frame</tt><br>
+to&nbsp;the&nbsp;nearest&nbsp;hundredth.&nbsp;<br>
+&nbsp;<br>
+<b>Args</b>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>data_frame</tt>:&nbsp;A&nbsp;pandas.DataFrame.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>*columns</tt>:&nbsp;The&nbsp;names&nbsp;of&nbsp;the&nbsp;columns&nbsp;that&nbsp;contain&nbsp;the&nbsp;values&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;you&nbsp;want&nbsp;to&nbsp;round.&nbsp;<tt>*columns</tt>&nbsp;parameters&nbsp;must&nbsp;be&nbsp;passed&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;as&nbsp;strings&nbsp;and&nbsp;the&nbsp;column&nbsp;arguments&nbsp;must&nbsp;have&nbsp;the&nbsp;<tt>float64</tt>&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;type.<br>
+<b>Raises</b>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>ValueError</tt>:&nbsp;If&nbsp;<tt>*columns</tt>&nbsp;parameters&nbsp;are&nbsp;not&nbsp;passed&nbsp;as&nbsp;strings.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>ValueError</tt>:&nbsp;If&nbsp;<tt>*columns</tt>&nbsp;arguments&nbsp;do&nbsp;not&nbsp;have&nbsp;the&nbsp;<tt>float64</tt>&nbsp;data&nbsp;type.</dd></dl><br>
+ <dl><dt><a name="-verify_positive_values"><strong>verify_positive_values</strong></a>(<tt>data_frame</tt>, <tt>*columns</tt>)</dt><dd>Verifies&nbsp;that&nbsp;specifed&nbsp;columns&nbsp;in&nbsp;<tt>data_frame</tt>&nbsp;have&nbsp;only&nbsp;positive&nbsp;values.<br>
+&nbsp;<br>
+<b>Args</b>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>data_frame</tt>:&nbsp;A&nbsp;pandas.DataFrame.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>*columns</tt>:&nbsp;The&nbsp;names&nbsp;of&nbsp;the&nbsp;<tt>float64</tt>&nbsp;columns&nbsp;that&nbsp;you<br>
+&nbsp;&nbsp;&nbsp;&nbsp;want&nbsp;to&nbsp;check&nbsp;for&nbsp;negative&nbsp;values.&nbsp;<tt>*columns</tt>&nbsp;parameters&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;must&nbsp;be&nbsp;passed&nbsp;as&nbsp;strings&nbsp;and&nbsp;the&nbsp;column&nbsp;arguments&nbsp;must&nbsp;have&nbsp;the&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>float64</tt>&nbsp;or&nbsp;<tt>int64</tt>&nbsp;data&nbsp;type.<br>
+<b>Raises</b>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>ValueError</tt>:&nbsp;If&nbsp;<tt>*columns</tt>&nbsp;parameters&nbsp;are&nbsp;not&nbsp;passed&nbsp;as&nbsp;strings.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<tt>ValueError</tt>:&nbsp;If&nbsp;values&nbsp;in&nbsp;column&nbsp;arguments&nbsp;contain&nbsp;negative&nbsp;values.</dd></dl>
+</td></tr></tbody></table></p><p><font color="#ffffff" face="helvetica, arial">
+<table width="100%" cellspacing="0" cellpadding="2" border="0" summary="section">
+<tbody><tr bgcolor="#55aa55">
+
+</tr></tbody></table></font></p></font></body></html>
