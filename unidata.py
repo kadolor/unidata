@@ -115,8 +115,8 @@ def create_float_values(data_frame, *columns):
 def format_currency_entries(data_frame, character="$", *columns):
     """Formats data_frame columns in the following ways: 
     - Removes currency symbol.
-    - Converts data_frame columns to float64.
-    - Rounds data_frame columns to the nearest hundredth.
+    - Converts specified data_frame columns to the float64 data type.
+    - Rounds values in specified data_frame columns to the nearest hundredth.
 
     Args:
         data_frame: A pandas.DataFrame.
