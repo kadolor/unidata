@@ -49,7 +49,8 @@ def remove_character_from_column(data_frame, character, *columns):
             data_frame[each_column] = data_frame[each_column].str.replace(
                 character, "")
         else:
-            raise ValueError(each_column + " column argument must have the object data type.")
+            raise ValueError(each_column +
+                             " column argument must have the object data type.")
 
 
 def get_column_names(data_frame):
@@ -61,7 +62,7 @@ def get_column_names(data_frame):
         A list of every column name in data_frame.
     """
     data_frame.columns.get_values()
-    
+
     return data_frame.columns.get_values()
 
 
@@ -86,7 +87,9 @@ def round_column(data_frame, *columns):
         if data_frame[each_column].dtype == "float64":
             data_frame[each_column] = data_frame[each_column].round(decimals=2)
         else:
-            raise ValueError(each_column + " column argument must have the float64 data type.")
+            raise ValueError(
+                each_column +
+                " column argument must have the float64 data type.")
 
 
 def create_float_values(data_frame, *columns):
@@ -157,4 +160,4 @@ def verify_positive_values(data_frame, *columns):
             for value in data_frame[each_column]:
                 if value < 0:
                     raise ValueError(each_column +
-                        " column contains negative values.")
+                                     " column contains negative values.")
