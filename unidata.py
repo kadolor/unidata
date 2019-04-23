@@ -40,17 +40,16 @@ def remove_character_from_column(data_frame, character, *columns):
         and the column arguments must have the object data type.
     Raises:
         ValueError: If *columns parameters are not passed as strings.
+        ValueError: If *columns arguments do not have the object data type.
     """
     for each_column in columns:
-        if type(each_column) == str:
-            continue
-        else:
-            raise ValueError("*columns parameters must be passed as strings.")
+        if type(each_column) != str:
+            raise ValueError(each_column + " must be passed a string.")
         if data_frame[each_column].dtype == "object":
             data_frame[each_column] = data_frame[each_column].str.replace(
                 character, "")
         else:
-            raise ValueError("Column arguments must have the object data type")
+            raise ValueError(each_column + " column argument must have the object data type.")
 
 
 def get_column_names(data_frame):
@@ -61,8 +60,9 @@ def get_column_names(data_frame):
     Returns:
         A list of every column name in data_frame.
     """
-    column_names = data_frame.columns.get_values()
-    return column_names
+    data_frame.columns.get_values()
+    
+    return data_frame.columns.get_values()
 
 
 def round_column(data_frame, *columns):
@@ -77,16 +77,16 @@ def round_column(data_frame, *columns):
         data type.
     Raises:
         ValueError: If *columns parameters are not passed as strings.
+        ValueError: If *columns arguments do not have the float64 data type.
+
     """
     for each_column in columns:
-        if type(each_column) == str:
-            continue
-        else:
-            raise ValueError("*columns parameters must be passed as strings.")
+        if type(each_column) != str:
+            raise ValueError(each_column + " must be passed a string.")
         if data_frame[each_column].dtype == "float64":
             data_frame[each_column] = data_frame[each_column].round(decimals=2)
         else:
-            raise ValueError("A column in *columns is not a float.")
+            raise ValueError(each_column + " column argument must have the float64 data type.")
 
 
 def create_float_values(data_frame, *columns):
@@ -102,10 +102,8 @@ def create_float_values(data_frame, *columns):
         ValueError: If *columns parameters are not passed as strings.
     """
     for each_column in columns:
-        if type(each_column) == str:
-            continue
-        else:
-            raise ValueError("*columns parameters must be passed as strings.")
+        if type(each_column) != str:
+            raise ValueError(each_column + " must be passed a string.")
     for each_column in columns:
         data_frame[each_column] = pd.to_numeric(data_frame[each_column])
         data_frame[each_column].astype(dtype=float)
@@ -128,10 +126,8 @@ def format_currency_entries(data_frame, character="$", *columns):
         ValueError: If *columns parameters are not passed as strings.
     """
     for each_column in columns:
-        if type(each_column) == str:
-            continue
-        else:
-            raise ValueError("*columns parameters must be passed as strings.")
+        if type(each_column) != str:
+            raise ValueError(each_column + " must be passed a string.")
 
     for column in columns:
         remove_character_from_column(data_frame, character, column)
@@ -153,14 +149,12 @@ def verify_positive_values(data_frame, *columns):
         ValueError: If values in column arguments contain negative values.
     """
     for each_column in columns:
-        if type(each_column) == str:
-            continue
-        else:
-            raise ValueError("*columns parameters must be passed as strings.")
+        if type(each_column) != str:
+            raise ValueError(each_column + " must be passed a string.")
 
     for each_column in columns:
         if data_frame[each_column].dtype == "float64" or "int64":
             for value in data_frame[each_column]:
                 if value < 0:
-                    raise ValueError(
-                        "Columns in this DataFrame contain negative values.")
+                    raise ValueError(each_column +
+                        " column contains negative values.")
