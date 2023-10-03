@@ -1,6 +1,6 @@
 # unidata
 
-Unidata a Python library geared towards helping university research assistants with automating the cleaning of low quality data sets in preparation for advanced machine learning analysis.
+Unidata is a Python library geared towards helping university research assistants with automating the cleaning of low quality data sets in preparation for advanced machine learning analysis.
 
 Importing the `unidata` module allows you to use the `unidata` module's functions to automate the data cleaning process. 
 
