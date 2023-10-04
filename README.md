@@ -6,7 +6,7 @@ Importing the `unidata` module allows you to use the `unidata` module's function
 
 ## unidata benefits
 
-As a university research assistant, you might be required to process, collate, and analyze data such as surveys surveys for the
+As a university research assistant, you might be required to process, collate, and analyze data such as  surveys for
 research study coordinators. When you receive a survey from a research study participant, you are receiving
 raw data. You might have to perform several tasks to make that raw data usable in the study coordinators'
 research. 
