@@ -24,6 +24,6 @@ Calling the `format_currency_entries()` prepares raw data columns that contain u
 data analysis.
 
 You can use `format_currency_entries()` to do the following:
-  + Remove any unwanted characters from specified columns.
+  + Remove the dollar sign ($) from specified column values.
   + Convert the values in any specified columns from the `object` data type to the `float64` data type.
   + Round each value in specified columns to the nearest hundredth.
