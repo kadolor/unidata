@@ -19,10 +19,11 @@ that data manually. With a more automated solution, you can reduce your time spe
 the likelihood for human error
 
 ## Example: Using format_currency_entries()
-Calling the `format_currency_entries()` prepares raw data columns that contain dollar values for further
+
+Calling the `format_currency_entries()` prepares raw data columns that contain unwanted characters for further
 data analysis.
 
 You can use `format_currency_entries()` to do the following:
-  + Remove the USD symbol ("$") from specified columns.
-  + Convert those specified columns from the object data type to the float64 data type.
+  + Remove any unwanted characters from specified columns.
+  + Convert the values in any specified columns from the `object` data type to the `float64` data type.
   + Round each value in specified columns to the nearest hundredth.
